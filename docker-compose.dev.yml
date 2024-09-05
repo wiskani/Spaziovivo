@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  nextjs:
+    build:
+      context: ./spaziovivo-app
+      dockerfile: dev.Dockerfile
+    container_name: next-server
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./spaziovivo-app:/nextjs
+
+  db:
+    container_name: pg_container
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "db_prod"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  
+
+  admin:
+    container_name: pg_admin_container
+    image: dpage/pgadmin4
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+
+volumes:
+  db_data:
+
+
