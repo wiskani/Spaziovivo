@@ -20,17 +20,9 @@ model Employee {
     estates     Estates[]
 }
 
-model Country {
-    id        Int     @default(autoincrement()) @id
-    country_name    String
-    cities    City[]
-}
-
 model City {
     id        Int     @default(autoincrement()) @id
     city_name    String
-    country    Country   @relation(fields: [countryId], references: [id])
-    countryId  Int
     estates     Estates[]
 }
 
@@ -63,8 +55,18 @@ model Estates{
     number_of_bedroom Int
     number_of_bathroom Int
     estate_description  String @db.Text()
-    price String
-    price_monthly Boolean
-    coordinates String
-    pictures String @db.Text()
+    price Float
+    price_monthly Float
+    currency String
+    latitude Float
+    longitude Float
+    pictures    Photos[]
+}
+
+model Photos {
+    id String @id @default(uuid())
+    url String
+    tag String?
+    estate Estates @relation(fields: [estateId], references: [id])
+    estateId String
 }
