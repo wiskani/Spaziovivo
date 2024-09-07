@@ -37,3 +37,8 @@ coverage/
 .idea/
 *.swp
 
+#Storybook
+storybook-static
+test-storybooks/ember-cli/ember-output
+test-storybooks/angular-cli/addon-jest.testresults.json
+
