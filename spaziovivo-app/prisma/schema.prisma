@@ -20,9 +20,17 @@ model Employee {
     estates     Estates[]
 }
 
+model Province {
+    id  Int @default(autoincrement()) @id
+    province_name String
+    cities  City[]
+    }
+
 model City {
     id        Int     @default(autoincrement()) @id
     city_name    String
+    province    Province    @relation(fields: [provinceId], references: [id])
+    provinceId  Int
     estates     Estates[]
 }
 
