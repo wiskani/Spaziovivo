@@ -1,8 +1,12 @@
-import { Province, Estates } from ".prisma/client";
+import { Province, Estates, City } from ".prisma/client";
 import { useRouter } from "next/router";
 
+interface EstatesWithCityAndProvince extends Estates {
+    city: City & { province: Province };
+}
+
 interface FDropdownLocationProps {
-    locations: Estates[] ;
+    locations: EstatesWithCityAndProvince[]
     provinces: Province[];
     handleClick: (value: string) => void;
 }
