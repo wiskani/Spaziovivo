@@ -1,14 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import FDropdownLocation from '@/components/Filters/FDropdownLocation';
+// src/mocks/mockData.ts
 
-const meta: Meta<typeof FDropdownLocation> = {
-    component: FDropdownLocation,
-}
-
-export default meta;
-type Story = StoryObj<typeof FDropdownLocation>
-
-const mockProvinces = [
+export const mockProvinces = [
   {
     id: 1,
     province_name: "Province A",
@@ -27,7 +19,7 @@ const mockProvinces = [
   },
 ];
 
-const mockLocations = [
+export const mockLocations = [
   {
     id: "1",
     estate_name: "Estate 1",
@@ -35,7 +27,7 @@ const mockLocations = [
     city: {
       id: 1,
       city_name: "City A1",
-      provinceId: 1, // Agrega el campo provinceId
+      provinceId: 1,
       province: { id: 1, province_name: "Province A", cities: [] },
     },
     typeId: 1,
@@ -66,7 +58,7 @@ const mockLocations = [
     city: {
       id: 3,
       city_name: "City B1",
-      provinceId: 2, // Agrega el campo provinceId
+      provinceId: 2,
       province: { id: 2, province_name: "Province B", cities: [] },
     },
     typeId: 2,
@@ -92,12 +84,3 @@ const mockLocations = [
   },
 ];
 
-
-export const Primary: Story = {
-    args: {
-    locations: mockLocations,
-    provinces: mockProvinces,
-    handleClick: (value: string) => console.log("Clicked city:", value),
-
-    }
-}
