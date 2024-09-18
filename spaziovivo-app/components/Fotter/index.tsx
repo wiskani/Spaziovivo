@@ -10,11 +10,9 @@ const Footer: React.FC<FooterProps> = ({}) => {
             <div className="flex flex-col md:flex-row py-16">
                 <div className="flex-1.5 flex flex-col items-center md:items-start">
                     <Link href="/">
-                        <a>
                             <h1 className="font-charm text-primary text-4xl md:text-6xl font-bold">
                                Spaziovivo 
                             </h1>
-                        </a>
                     </Link>
                     <p className="mt-2 text-base text-gray-400 md:w-4/5 text-center md:text-left">
                         Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -28,31 +26,23 @@ const Footer: React.FC<FooterProps> = ({}) => {
                     </h5>
                     <ul className="p-0 m-0 flex flex-col text-center md:text-left">
                         <li className="mt-1 group">
-                            <Link href="/listings?country=Italy">
-                                <a className="text-base text-desc group-hover:underline text-white">
+                            <Link href="/listings?country=Italy" className="text-base text-desc group-hover:underline text-white">
                                     Cochabamba
-                                </a>
                             </Link>
                         </li>
                         <li className="mt-1 group">
-                            <Link href="/listings?country=Spain">
-                                <a className="text-base text-desc group-hover:underline text-white">
+                            <Link href="/listings?country=Spain" className="text-base text-desc group-hover:underline text-white">
                                     Santa Cruz
-                                </a>
                             </Link>
                         </li>
                         <li className="mt-1 group">
-                            <Link href="/listings?country=United Kingdom">
-                                <a className="text-base text-desc group-hover:underline text-white">
+                            <Link href="/listings?country=United Kingdom" className="text-base text-desc group-hover:underline text-white">
                                     La Paz
-                                </a>
                             </Link>
                         </li>
                         <li className="mt-1 group">
-                            <Link href="/listings?country=Portugal">
-                                <a className="text-base text-desc group-hover:underline text-white">
+                            <Link href="/listings?country=Portugal" className="text-base text-desc group-hover:underline text-white">
                                     Oruro
-                                </a>
                             </Link>
                         </li>
                     </ul>

@@ -4,7 +4,8 @@ import {motion} from "framer-motion";
 import useWindowSize from "@/hooks/useWindowSize";
 import Link from "next/link";
 import { menuVariants } from "@/utils/variants";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
+
 import { useLazyEffect } from "@/hooks/useLazyEffect";
 
 interface FullMenuProps {
@@ -13,6 +14,7 @@ interface FullMenuProps {
 
 const FullMenu: React.FC<FullMenuProps> = ({handleClose}) => {
     const router = useRouter();
+    const pathname = usePathname();
     const [currOpen, setCurrOpen] = useState(true);
     const [heightDone, setHeightDone] = useState(false);
     const {width} = useWindowSize();
@@ -31,7 +33,7 @@ const FullMenu: React.FC<FullMenuProps> = ({handleClose}) => {
     useLazyEffect(() =>{
         removeOverflow();
         handleClose();
-    }, [router.pathname])
+    }, [pathname])
 
     return(
         <>
@@ -82,10 +84,8 @@ const FullMenu: React.FC<FullMenuProps> = ({handleClose}) => {
                                 <div className="menu__number">
                                     <p className="text-lg">(1)</p>
                                 </div>
-                                <Link href="/">
-                                    <a className="text-3xl md:text-8xl text-black222 font-bold custom__hover">
+                                <Link href="/" className="text-3xl md:text-8xl text-black222 font-bold custom__hover">
                                         Home
-                                    </a>
                                 </Link>
                             </motion.li>
                             <motion.li
@@ -98,10 +98,8 @@ const FullMenu: React.FC<FullMenuProps> = ({handleClose}) => {
                                 <div className="menu__number">
                                     <p className="text-lg">(2)</p>
                                 </div>
-                                <Link href="/listings">
-                                    <a className="text-3xl md:text-8xl text-black222 font-bold custom__hover">
+                                <Link href="/listings" className="text-3xl md:text-8xl text-black222 font-bold custom__hover">
                                         Listings
-                                    </a>
                                 </Link>
                             </motion.li>
 
@@ -115,10 +113,8 @@ const FullMenu: React.FC<FullMenuProps> = ({handleClose}) => {
                                 <div className="menu__number">
                                     <p className="text-lg">(3)</p>
                                 </div>
-                                <Link href="/locations">
-                                    <a className="text-3xl md:text-8xl text-black222 font-bold custom__hover">
+                                <Link href="/locations" className="text-3xl md:text-8xl text-black222 font-bold custom__hover">
                                         Locations
-                                    </a>
                                 </Link>
                             </motion.li>
                         </ul>
