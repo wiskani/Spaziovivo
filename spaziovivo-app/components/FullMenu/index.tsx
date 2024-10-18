@@ -9,7 +9,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useLazyEffect } from "@/hooks/useLazyEffect";
 
 interface FullMenuProps {
-    handleClose: () => any;
+    handleClose: () => void;
 }
 
 const FullMenu: React.FC<FullMenuProps> = ({handleClose}) => {
