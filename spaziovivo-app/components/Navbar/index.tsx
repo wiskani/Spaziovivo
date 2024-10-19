@@ -13,9 +13,7 @@ const Navbar: React.FC<NavbarProps>= ({}) => {
     const pathname = usePathname();
     const [isOpen, setOpen] = useState(false);
     const handleToggle = () => {
-        console.log("Before set: " + isOpen)
         setOpen(!isOpen)
-        console.log("After set: " + isOpen)
     };
 
     return(
@@ -71,7 +69,7 @@ const Navbar: React.FC<NavbarProps>= ({}) => {
                     </div>
             </Container>
         </header>
-        {isOpen?  <FullMenu handleClose={handleToggle} /> : null}
+        {isOpen &&  <FullMenu handleClose={handleToggle} /> }
         </>
     )
 }
